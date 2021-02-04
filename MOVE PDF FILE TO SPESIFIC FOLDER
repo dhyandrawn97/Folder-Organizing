@@ -1,0 +1,51 @@
+#import libraries
+
+import os
+from array import *
+import shutil
+import pandas
+
+
+class file_folder(folder):
+    def copy_folder(src, dest, folder):
+        src = r'D:\ALL ABOUT GEOLOGY\BUNCH OF PDF\TESTING' + '\\'
+        dest = r'D:\ALL ABOUT GEOLOGY\test_bunch of pdf' + '\\'
+        folder = os.listdir(src)
+
+        for x, element in enumerate(folder):
+    
+    
+            fld = os.path.join(src, element)   
+            temp_dest = os.path.join(dest, element)
+            shutil.copytree (fld, temp_dest)
+
+        os.listdir(dest)
+            
+            
+            
+            
+    def delete_certain_file(src, dest, folder):
+        src = r'D:\ALL ABOUT GEOLOGY\BUNCH OF PDF\TESTING' + '\\'
+        dest = r'D:\ALL ABOUT GEOLOGY\test_bunch of pdf' + '\\'
+        folder = os.listdir(src)
+        #print('\n'.join(map(str, folder)))
+
+
+
+        try:
+            for path, dir, files in os.walk(dest):
+                if files:
+                    for file in files:
+                        if not file.endswith(".pdf"):
+                            os.remove(path + '\\' + file)
+            print('All files except .pdf removed')         
+
+        except Exception as e:
+            print("All files except .pdf can not be removed")
+    
+    
+    
+    
+a = file_folder()       
+a.copy_folder(src, dest)
+a.delete_certain_file(dest, folder)
