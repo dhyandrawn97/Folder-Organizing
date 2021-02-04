@@ -1,0 +1,22 @@
+import os
+import shutil
+
+target_folder = r'D:\ALL ABOUT GEOLOGY\test_bunch of pdf' + '\\'
+source_folder = r'D:\ALL ABOUT GEOLOGY\BUNCH OF PDF\UAS MINOP' + '\\'
+
+
+def move_files(sourceFolder,targetFolder):
+    try:
+        for path, dir, files in os.walk(sourceFolder):
+            if files:
+                for file in files:
+                    if file.endswith(".pdf"):
+                        if not os.path.isfile(targetFolder + file): #pathisfile is boolean type (True or false)
+                            os.rename(path + '\\' + file, targetFolder + file)
+                            
+        print('All files moved')
+    
+    except Exception as e:
+        print(e)
+        
+move_files(source_folder, target_folder)
